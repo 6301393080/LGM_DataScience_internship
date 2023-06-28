@@ -1,32 +1,4 @@
-import cv2
+1)Image to Pencil Sketch with Python:
 
-def image_to_pencil_sketch(image_path):
-    # Read the image in RGB format
-    image = cv2.imread(image_path)
-
-    # Convert the image to grayscale
-    gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-
-    # Invert the grayscale image
-    inverted_image = cv2.bitwise_not(gray_image)
-
-    # Blur the inverted image
-    blurred_image = cv2.GaussianBlur(inverted_image, (21, 21), 0)
-
-    # Create the pencil sketch by dividing the grayscale image by the inverted blurry image
-    pencil_sketch = cv2.divide(gray_image, blurred_image, scale=256.0)
-
-    return pencil_sketch
-
-# Provide the path to your image
-image_path = 'path/to/your/image.jpg'
-
-# Convert the image to a pencil sketch
-sketch = image_to_pencil_sketch(image_path)
-
-# Display the original image and the pencil sketch
-cv2.imshow('Original Image', cv2.imread(image_path))
-cv2.imshow('Pencil Sketch', sketch)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+We need to read the image in RBG format and then convert it to a grayscale image. This will turn an image into a classic black and white photo. Then the next thing to do is invert the grayscale image also called negative image, this will be our inverted grayscale image. Inversion can be used to enhance details. Then we can finally create the pencil sketch by mixing the grayscale image with the inverted blurry image. This can be done by dividing the grayscale image by the inverted blurry image. Since images are just arrays, we can easily do this programmatically using the divide function from the cv2 library in Python.
                                         
